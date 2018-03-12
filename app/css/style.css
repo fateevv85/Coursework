@@ -278,6 +278,7 @@ body {
   top: 44px;
   left: -17px;
   cursor: default;
+  box-shadow: 6px 6px 14px 0 rgba(0,0,0,0.75);
   /*visibility: hidden;*/
 }
 
@@ -290,7 +291,7 @@ body {
   left: 27px;
 }
 
-.shp_cart .gooditem {
+.shp_cart .gooditem_incart {
   margin: 21px auto 33px;
   width: 230px;
   height: 85px;
@@ -304,7 +305,7 @@ body {
     opacity: 1; }
 }
 
-.shp_cart .gooditem .image {
+.shp_cart .gooditem_incart .image {
   width: 72px;
   height: 85px;
   float: left;
@@ -312,11 +313,7 @@ body {
   background-size: cover;
 }
 
-.shp_cart .gooditem .addtocart_button {
-  display: none;
-}
-
-.shp_cart .gooditem a {
+.shp_cart .gooditem_incart a {
   float: left;
   margin-left: 14px;
   display: block;
@@ -325,14 +322,14 @@ body {
   text-decoration: none;
 }
 
-.shp_cart .gooditem a div:first-child {
+.shp_cart .gooditem_incart a div:first-child {
   color: #222222;
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
 }
 
-.shp_cart .gooditem a div:last-child {
+.shp_cart .gooditem_incart a div:last-child {
   background-image: url(../img/5stars.png);
   width: 85px;
   height: 14px;
@@ -341,7 +338,7 @@ body {
   margin-top: 10px;
 }
 
-.shp_cart .gooditem .item_cost {
+.shp_cart .gooditem_incart .item_cost {
   font-size: 12px;
   text-transform: uppercase;
   margin-top: 10px;
@@ -349,8 +346,15 @@ body {
   font-weight: 400;
 }
 
+.shp_cart .gooditem_incart .item_cost::before {
+    content: '$';
+}
 
-.shp_cart .gooditem .item_cross {
+.shp_cart .gooditem_incart .item_cost::after {
+    content: '.00';
+}
+
+.shp_cart .gooditem_incart .item_cross {
   background-image: url(../img/cross-erase-mini.png);
   width: 15px;
   height: 15px;
@@ -358,7 +362,7 @@ body {
   cursor: pointer;
 }
 
-.shp_cart .gooditem .item_cross:hover {
+.shp_cart .gooditem_incart .item_cross:hover {
   background-position-y: 15px;
 }
 
@@ -408,6 +412,12 @@ body {
 
 .shp_cart .shp_cart__empty {
   margin: 0 auto 16px;
+    border: 1px solid #f16d7f;
+
+}
+
+.shp_cart .shp_cart__empty:hover {
+    cursor: default;
 }
 
 .shp_cart__hidden {
@@ -790,7 +800,6 @@ body {
 }
 
 .product .pr_text_top {
-  /*float: left;*/
   margin-bottom: 20px;
   width: 100%;
   height: 51px;
@@ -966,6 +975,10 @@ body {
   box-shadow: 2px 2px 7px 0 #000000;
 }
 
+.showcase__loading {
+    pointer-events: none;
+}
+
 .showcase__loading::before {
   content: '';
   display: block;
@@ -1012,14 +1025,14 @@ body {
 .showcase .incart .addtocart_button {
   visibility: visible;
   background-image: url(../img/Tick_Mark_Circle-512.png);
-  background-position: 1px 1px;
+  background-position: 8px 1px;
   -webkit-background-size: contain;
   background-size: contain;
   cursor: default;
 }
 
 .showcase .incart .addtocart_button:after {
-  content: "Already in Cart!";
+  content: "Item in Cart";
   color: #f16d7f;
 }
 

@@ -3,8 +3,7 @@
 
     // F:\GIT\Coursework\JSON_server>json-server db.json -w -d 1000
 
-    var endPoint = 'http://localhost:3000/cart',
-      productIdArr;
+    var endPoint = 'http://localhost:3000/cart';
 
     //get cart on page load
     $.get({
@@ -19,7 +18,7 @@
       }, cart)
     });
 
-    //add item to the cart
+    //add item to the cart by click on "add to cart" button
     $('.addtocart_button').click(function () {
       var thisButton = $(this);
 
@@ -33,7 +32,9 @@
           },
           data: {
             productId: $(this).parent().attr('productId'),
-            price: $(this).next().children('.item_cost').text()
+            price: $(this).next().children('.item_cost').text(),
+            imgURL: $(this).prev().css('background-image'),
+            productName: $(this).next().children(':first').text()
           }
         }).done(function () {
           console.log('Success!');

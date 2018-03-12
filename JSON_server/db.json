@@ -1,9 +1,11 @@
 {
   "cart": [
     {
-      "productId": "2",
-      "price": "20",
-      "id": 1
+      "productId": "1",
+      "price": "10",
+      "imgURL": "url(\"file:///F:/GIT/Coursework/app/img/layer-2.png\")",
+      "productName": "Mango People T-shirt",
+      "id": 4
     }
   ]
 }
