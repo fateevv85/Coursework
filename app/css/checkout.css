@@ -224,38 +224,82 @@ input[id="item-radio_6"]:checked + .acc__header + .acc__item {
 .acc__input_text-capitalize {
   text-transform: capitalize; }
 
-#city_input {
+.acc__item_billing-info #city_input_form {
+  width: 392px;
   position: relative; }
-  #city_input #city_list {
+  .acc__item_billing-info #city_input_form #city_input {
+    position: relative; }
+  .acc__item_billing-info #city_input_form #city_list {
     position: absolute;
-    top: 64px;
-    left: 22px;
-    width: 50%;
-    height: 100%; }
+    width: auto;
+    height: auto;
+    top: 61px;
+    left: 21px; }
 
-.wrong_input {
+.acc__label_loader {
+  display: none;
+  position: relative;
+  float: right;
+  margin-right: 48px; }
+  .acc__label_loader .loader_container {
+    position: absolute;
+    top: -22px;
+    height: auto;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation-name: rotate;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; }
+    .acc__label_loader .loader_container span {
+      position: absolute;
+      height: 22px;
+      width: 4px;
+      background: #333; }
+    .acc__label_loader .loader_container #cog-0 {
+      position: absolute;
+      transform: rotate(0deg); }
+    .acc__label_loader .loader_container #cog-45 {
+      position: absolute;
+      transform: rotate(45deg); }
+    .acc__label_loader .loader_container #cog-90 {
+      position: absolute;
+      transform: rotate(90deg); }
+    .acc__label_loader .loader_container #cog-135 {
+      position: absolute;
+      transform: rotate(135deg); }
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+.wrong_input, .wrong_city {
   position: relative; }
-  .wrong_input input {
+  .wrong_input input, .wrong_city input {
     border: 1px solid red; }
-  .wrong_input:before {
+  .wrong_input:before, .wrong_city:before {
     content: '';
     display: block;
     position: absolute;
     border-radius: 5px;
-    top: 36px;
+    top: 41px;
     left: 28%;
     background-color: yellow;
     box-shadow: 0 0 10px #3b9657;
-    width: 150px;
+    width: 175px;
     height: 20px;
     opacity: 0.5;
+    z-index: 5;
     animation: appears 1s ease; }
-  .wrong_input:after {
-    content: 'only russian letters!';
+  .wrong_input:after, .wrong_city:after {
+    content: 'Only russian letters!';
     position: absolute;
-    top: 33px;
+    top: 38px;
     left: 29%;
     opacity: 0.8;
+    z-index: 6;
     animation: appears 1s ease; }
 @keyframes appears {
   0% {
@@ -264,6 +308,9 @@ input[id="item-radio_6"]:checked + .acc__header + .acc__item {
     opacity: 1; }
   100% {
     opacity: 0.5; } }
+.wrong_city:after {
+  content: 'No such city in data-base!'; }
+
 .acc__form {
   margin: 33px 0;
   line-height: 27px; }
