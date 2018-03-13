@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>Shopping cart</title>
@@ -10,17 +9,16 @@
   <link rel="stylesheet" href="css/mobile.css">
   <!-- endbuild -->
 </head>
-
 <body>
   <div class="container">
     <div class="header">
       <div class="header_top">
         <div class="logo">
-          <a href="#"></a>
+          <a href="index.html"></a>
         </div>
         <div class="logo_text">
-          <a href="#">bran</a> </div>
-        <div class="logo_text_d"><a href="#">d</a>
+          <a href="index.html">bran</a> </div>
+        <div class="logo_text_d"><a href="index.html">d</a>
         </div>
         <div class="dropdown_menu">
           <div class="menu_heading">
@@ -65,26 +63,24 @@
           </form>
         </div>
         <div class="shp_cart">
+          <div class="items_number shp_cart__hidden"></div>
           <div class="shp_cart__menu">
-            <div class="shp_cart__menu_item">
-              <img src="img/shp_cart_layer-43.png" width="72" height="85" alt="cart_item">
-              <div class="menu_item__name">Rebox Zane</div>
-              <div class="menu_item__stars"></div>
-              <div class="menu_item__cost">1 &times; $250 </div>
-              <div class="menu_item__cross"></div>
+            <div class="shp_cart__list"></div>
+            <div class="shp_cart__total shp_cart__hidden">
+              Total price:
+              <span></span>
             </div>
-            <div class="shp_cart__menu_item">
-              <img src="img/shp_cart_layer-44.png" width="72" height="85" alt="cart_item">
-              <div class="menu_item__name">Rebox Zane</div>
-              <div class="menu_item__stars"></div>
-              <div class="menu_item__cost">1 &times; $250</div>
-              <div class="menu_item__cross"></div>
+            <div class="shp_cart__empty shp_cart__hidden">Cart is empty</div>
+            <div class="shp_cart__loading ">
+              <div class="showcase__loading"></div>
+              Cart is loading
             </div>
-            <div class="shp_cart__total">TOTAL
-              <span>$500.00</span>
+            <div class="shp_cart__checkout shp_cart__hidden">
+              <a href="checkout.html">Checkout</a>
             </div>
-            <div class="shp_cart__checkout">Checkout</div>
-            <div class="shp_cart__gotocart">Go to cart</div>
+            <!--<div class="shp_cart__gotocart shp_cart__hidden">-->
+              <!--<a href="shopping_cart.html">Go to cart</a>-->
+            <!--</div>-->
           </div>
         </div>
         <div class="acc_btn"><a href="#">My Account</a></div>
@@ -493,7 +489,6 @@
               <option value="YE">Yemen</option>
               <option value="ZM">Zambia</option>
               <option value="ZW">Zimbabwe</option>
-
          </select>
             <input type="text" placeholder="State">
             <input type="text" placeholder="Postcode / Zip">
@@ -626,12 +621,20 @@
       </div>
     </div>
   </div>
-  <!--  Скрипты-->
+  <!-- build:js scripts/vendorJS.js -->
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/owl.carousel.min.js"></script>
-  <script src="js/customsettings.js"></script>
+  <script src="js/jquery.maskedinput.js"></script>
+  <!--<script src="js/customVendorSettings.js"></script>-->
+  <script src="js/mask-rules.js"></script>
   <script src="js/select-box.js"></script>
+  <!-- endbuild -->
+  <!-- build:js scripts/customJS.js -->
+  <script src="js/customsettings.js"></script>
+  <script src="js/citySelect.js"></script>
+  <script src="js/add_to_cart.js"></script>
+  <!-- endbuild -->
 </body>
 
 </html>

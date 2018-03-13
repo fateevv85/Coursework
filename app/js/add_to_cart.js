@@ -1,48 +1,49 @@
 (function ($) {
   $(function () {
-
-    // F:\GIT\Coursework\JSON_server>json-server db.json -w -d 1000
-
+    //command for json-server
+    // F:\GIT\Coursework\JSON_server>json-server db.json -w -d 1500
     var endPoint = 'http://localhost:3000/cart';
-
     //get cart on page load
     $.get({
       url: endPoint,
       beforeSend: function () {
-        $('.gooditem').addClass('showcase__loading');
+        //add loader
+        if ($('.showcase')) {
+          $('.gooditem').addClass('showcase__loading');
+        }
       }
     }).done(function (cart) {
+      //hide loader
       $('.shp_cart__loading').hide();
       //refresh items in showcase
       refreshShowcase(cart);
       //render items in cart
       renderCart(cart);
     });
-
     //add item to the cart by click on "add to cart" button
-    $('.addtocart_button').click(function () {
-      var button = $(this);
-      if (button.parent().hasClass('incart')) {
-        console.log('Already in cart!');
-      } else {
-        //send data to json-server
-        $.post({
-          url: endPoint,
-          beforeSend: function () {
-            button.parent().toggleClass('showcase__loading');
-          },
-          data: {
-            productId: button.parent().attr('productId'),
-            price: button.next().children('.item_cost').text(),
-            imgURL: button.prev().css('background-image'),
-            productName: button.next().children(':first').text()
-          }
-        }).done(function () {
-          button.parent().addClass('incart').toggleClass('showcase__loading');
-          refreshCart();
-        });
-      }
-    });
+    if ($('.showcase')) {
+      $('.addtocart_button').click(function () {
+        var button = $(this);
+        if (!button.parent().hasClass('incart')) {
+          //send data to json-server
+          $.post({
+            url: endPoint,
+            beforeSend: function () {
+              button.parent().toggleClass('showcase__loading');
+            },
+            data: {
+              productId: button.parent().attr('productId'),
+              price: button.next().children('.item_cost').text(),
+              imgURL: button.prev().css('background-image'),
+              productName: button.next().children(':first').text()
+            }
+          }).done(function () {
+            button.parent().addClass('incart').toggleClass('showcase__loading');
+            refreshCart();
+          });
+        }
+      });
+    }
 
     //render function
     function renderCart(cart) {
@@ -72,6 +73,7 @@
           //calculate total cost
           totalCost += parseInt(cart[i].price);
         }
+        $('.shp_cart__empty').hide();
         $('.shp_cart__total').show().children('span').text(totalCost);
         //additional buttons are visible
         $('.shp_cart__checkout, .shp_cart__gotocart').show();
@@ -99,13 +101,13 @@
     }
 
     function refreshShowcase(cart) {
-      $('.gooditem').removeClass('showcase__loading incart');
-
-      console.log(cart);
-      //if item is in cart, marking it
-      Object.keys(cart).forEach(function (value) {
-        $('.gooditem[productId="' + this[value].productId + '"]').addClass('incart');
-      }, cart);
+      if ($('.showcase')) {
+        $('.gooditem').removeClass('showcase__loading incart');
+        //if item is in cart, marking it
+        Object.keys(cart).forEach(function (value) {
+          $('.gooditem[productId="' + this[value].productId + '"]').addClass('incart');
+        }, cart);
+      }
     }
 
     //delete item in cart
@@ -121,7 +123,6 @@
         }
       );
     }
-
 
   });  //end of jQuery
 })(jQuery);
