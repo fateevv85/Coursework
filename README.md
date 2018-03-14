@@ -1,6 +1,9 @@
 # Coursework
 Coursework for I quarter
 
+Верстка сайта по PSD макету.
+Используемые технологии: HTML5, CSS3 (SCSS preprocessing), JS native, JQuery, JQuery UI, Bootstrap, Ajax, GULP.
+
 В папке APP – полная версия, в DIST – облегченная.
 
 Функционал корзины:
